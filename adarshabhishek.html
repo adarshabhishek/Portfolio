@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adarsh Abhishek — Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+
+  <!-- GSAP + ScrollTrigger for tasteful animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- tsParticles for subtle animated background -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2/tsparticles.engine.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.min.js"></script>
+
+  <style>
+    :root{ --bg:#0B0B0C; --card:#131316; --muted:#9aa0aa; --line:#232329; --acc:#58D26A; }
+    html { scroll-behavior: smooth; }
+    body { background: radial-gradient(1200px 800px at 80% -10%, rgba(88,210,106,0.15), transparent 60%), var(--bg); color:#E8E8E8; font-family:'Poppins',sans-serif; overflow-x:hidden; }
+    .container-main{ max-width:1200px; margin:0 auto; padding:2rem 1rem; }
+    /* Fancy gradient border for cards */
+    .ring-gradient { position: relative; }
+    .ring-gradient::before { content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background:linear-gradient(135deg, rgba(88,210,106,0.8), rgba(88,210,106,0.15), rgba(255,255,255,0.08)); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; }
+    /* Shimmer underline */
+    .link-effect { position:relative; display:inline-block; }
+    .link-effect::after{ content:""; position:absolute; left:0; bottom:-2px; width:100%; height:2px; background:linear-gradient(90deg, transparent, var(--acc), transparent); transform:scaleX(0); transform-origin:right; transition:transform .35s ease; }
+    .link-effect:hover::after{ transform:scaleX(1); transform-origin:left; }
+    /* Subtle glow ring around avatar */
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(88,210,106,.45);} 50% { box-shadow: 0 0 0 12px rgba(88,210,106,0);} }
+    .glow { animation:pulseGlow 3s ease-in-out infinite; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar{ width:10px; } 
+    ::-webkit-scrollbar-track{ background:#0f1012; } 
+    ::-webkit-scrollbar-thumb{ background:#2a2d33; border-radius:8px; }
+    ::-webkit-scrollbar-thumb:hover{ background:#3a3f46; }
+
+    /* Cursor blob */
+    .cursor-blob { position:fixed; inset:auto; top:0; left:0; width:280px; height:280px; pointer-events:none; border-radius:50%; filter: blur(60px); background: radial-gradient(circle at 30% 30%, rgba(88,210,106,.25), transparent 60%); transform: translate(-50%,-50%); z-index:0; }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-300/20 selection:text-white">
+  <!-- Animated particles -->
+  <div id="tsparticles" class="fixed inset-0 -z-10"></div>
+  <!-- Cursor glow -->
+  <div class="cursor-blob" id="cursorBlob"></div>
+
+  <!-- Header / Nav -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/5">
+    <nav class="container-main flex items-center justify-between py-4">
+      <a href="#home" class="text-2xl font-bold tracking-tight hover:opacity-90 transition">
+        <span class="text-[var(--acc)]">&lt;</span>Adarsh Abhishek<span class="text-[var(--acc)]">/&gt;</span>
+      </a>
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-white/10 hover:bg-white/5">
+        <i class="ti ti-menu-2 text-xl"></i>
+      </button>
+      <div id="navLinks" class="hidden md:flex items-center gap-6">
+        <a class="link-effect hover:text-white" href="#about">About</a>
+        <a class="link-effect hover:text-white" href="#education">Education</a>
+        <a class="link-effect hover:text-white" href="#skills">Skills</a>
+        <a class="link-effect hover:text-white" href="#projects">Projects</a>
+        <a class="link-effect hover:text-white" href="#contact">Contact</a>
+        <a class="inline-flex items-center gap-2 rounded-xl bg-[var(--acc)]/10 border border-[var(--acc)]/40 px-4 py-2 hover:bg-[var(--acc)]/20 transition" href="https://drive.google.com/uc?export=download&id=1Ac8hGeXO2yOHQJ3maWSPupKbyBtrcUZe" download>
+          <i class="ti ti-download"></i>
+          <span class="font-medium">Resume</span>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-black/50 backdrop-blur-xl">
+      <div class="container-main py-3 flex flex-col gap-3">
+        <a class="link-effect py-1" href="#about">About</a>
+        <a class="link-effect py-1" href="#education">Education</a>
+        <a class="link-effect py-1" href="#skills">Skills</a>
+        <a class="link-effect py-1" href="#projects">Projects</a>
+        <a class="link-effect py-1" href="#contact">Contact</a>
+        <a class="inline-flex items-center gap-2 rounded-xl bg-[var(--acc)]/10 border border-[var(--acc)]/40 px-4 py-2 w-max" href="https://drive.google.com/uc?export=download&id=1Ac8hGeXO2yOHQJ3maWSPupKbyBtrcUZe" download>
+          <i class="ti ti-download"></i>
+          <span class="font-medium">Download Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-main relative z-10">
+    <!-- Hero -->
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center">
+      <div class="relative w-44 h-44 md:w-56 md:h-56 mb-8 rounded-full overflow-hidden border border-white/10 ring-4 ring-emerald-500/20 glow">
+        <!-- Replace with your hosted image -->
+        <img src="profile_image.jpg" alt="Adarsh Abhishek" class="w-full h-full object-cover" />
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        <span class="text-[var(--acc)]">Hi, I'm Adarsh Abhishek</span>
+        <span class="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">Android Developer • Problem Solver</span>
+      </h1>
+      <p id="typewriter" class="mt-6 text-lg md:text-xl text-white/70 h-7"></p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#projects" class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">View Projects</a>
+        <a href="https://drive.google.com/uc?export=download&id=1Ac8hGeXO2yOHQJ3maWSPupKbyBtrcUZe" class="px-5 py-3 rounded-2xl bg-[var(--acc)] text-black font-semibold hover:opacity-90 transition" download>
+          <i class="ti ti-download inline-block mr-2"></i> Download Resume
+        </a>
+      </div>
+
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-90">
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Kotlin</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Jetpack Compose</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Firebase</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">DSA</div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <p class="text-lg text-white/80 leading-relaxed">
+            A Computer Science undergraduate skilled in Android development, proficient in DSA with a strong problem-solving approach.
+            I love building clean, scalable, user-focused solutions and I’m comfortable across the stack (Android + a bit of web).
+          </p>
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <span class="px-3 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">Open to Internships</span>
+            <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10">Remote / Onsite</span>
+          </div>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <i class="ti ti-map-pin"></i>
+            <span>Bhubaneswar, Odisha • India</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ti ti-mail"></i>
+            <a class="link-effect" href="mailto:adarshabhishek1203@gmail.com">Gmail</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ti ti-brand-linkedin"></i>
+            <a class="link-effect" href="https://linkedin.com/in/adarsh-abhishek" target="_blank">LinkedIn</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ti ti-brand-github"></i>
+            <a class="link-effect" href="https://github.com/adarshabhishek" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold">KIIT University (CSE)</h3>
+          <p class="text-white/60">Bhubaneswar, Odisha</p>
+          <p class="mt-2">July 2022 – July 2026</p>
+          <p class="mt-1 text-emerald-300">CGPA: 8.55/10 (6th Sem)</p>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold">Chinmaya Vidyalaya (CBSE)</h3>
+          <p class="text-white/60">Bokaro Steel City, Jharkhand</p>
+          <p class="mt-2">Mar 2019 – Mar 2021</p>
+          <p class="mt-1">Percentage: 87.6%</p>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold">De-Nobili School F.R.I. (ICSE)</h3>
+          <p class="text-white/60">Dhanbad, Jharkhand</p>
+          <p class="mt-2">Mar 2008 – Apr 2019</p>
+          <p class="mt-1">Percentage: 93.0%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Skills</h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-2">Programming Languages</h3>
+          <p>Java, Kotlin, C/C++, JavaScript, Python</p>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-2">Libraries / Frameworks</h3>
+          <p>Android Jetpack, Dagger Hilt, Firebase SDK, ZegoCloud SDK, React.js, ML Kit, Coil, Retrofit</p>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-2">Tools / Platforms</h3>
+          <p>GitHub, VS Code, Android Studio, Firebase</p>
+        </div>
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6 md:col-span-2 lg:col-span-1">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-2">Key Subjects</h3>
+          <p>OOPS, DSA, DBMS, OS, SQL</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects & Open Source</h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card template -->
+        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
+          <header class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold">Food Delivery App</h3>
+            <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">Ongoing</span>
+          </header>
+          <p class="mt-3 text-white/80">Full‑stack Android app for customers, riders, and restaurants. Auth, real‑time tracking, notifications.</p>
+          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/BhojanBox">
+            GitHub <i class="ti ti-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
+          <h3 class="text-2xl font-bold">Firebase Auth App</h3>
+          <p class="mt-3 text-white/80">Kotlin + Firebase Authentication with email/password, Google sign‑in, and password reset.</p>
+          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/FirebaseAuthApp">
+            GitHub <i class="ti ti-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
+          <h3 class="text-2xl font-bold">Video Calling App</h3>
+          <p class="mt-3 text-white/80">1:1 real‑time calling using Jetpack Compose, Kotlin, Hilt, Firebase RTDB, ZegoCloud SDK.</p>
+          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/VideoCallingApp">
+            GitHub <i class="ti ti-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
+          <h3 class="text-2xl font-bold">AI Image Generator</h3>
+          <p class="mt-3 text-white/80">Responsive web app that generates images from text prompts via Hugging Face models.</p>
+          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/AI-Image-Generator">
+            GitHub <i class="ti ti-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
+          <h3 class="text-2xl font-bold">Document Scanner App</h3>
+          <p class="mt-3 text-white/80">Android + ML Kit Document Scanner. Save as JPEG/PDF with local storage and instant preview.</p>
+          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/Document-Scanner-App">
+            GitHub <i class="ti ti-arrow-up-right"></i>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get in Touch</h2>
+      <div class="max-w-3xl mx-auto text-center text-lg leading-relaxed">
+        <p class="mb-8">Reach out for collaboration, freelance gigs, or just to say hello!</p>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+          <a class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition" href="mailto:adarshabhishek1203@gmail.com">
+            <i class="ti ti-mail"></i> Email
+          </a>
+          <a class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition" target="_blank" href="https://github.com/adarshabhishek">
+            <i class="ti ti-brand-github"></i> GitHub
+          </a>
+          <a class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition" target="_blank" href="https://www.linkedin.com/in/adarsh-abhishek-339485272/">
+            <i class="ti ti-brand-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-10 text-sm text-white/50 border-t border-white/10">
+    © <span id="year"></span> Adarsh Abhishek. All rights reserved.
+  </footer>
+
+  <script>
+    // ——— Particles background (very light density) ———
+    (async () => {
+      const { tsParticles } = window;
+      await tsParticles.load("tsparticles", {
+        fpsLimit: 60,
+        background: { color: "transparent" },
+        particles: {
+          number: { value: 25, density: { enable: true, area: 1200 } },
+          color: { value: ["#58D26A", "#FFFFFF"] },
+          opacity: { value: 0.12 },
+          size: { value: { min: 1, max: 3 } },
+          move: { enable: true, speed: 0.6 },
+          links: { enable: true, color: "#58D26A", distance: 140, opacity: 0.08 },
+        }
+      });
+    })();
+
+    // ——— Mobile menu toggle ———
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // ——— Smooth scroll for in-page links ———
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block:'start' });
+          mobileMenu?.classList.add('hidden');
+        }
+      });
+    });
+
+    // ——— Typewriter ———
+    const twEl = document.getElementById('typewriter');
+    const phrases = [
+      'Computer Science Undergraduate',
+      'Android Developer',
+      'Problem Solver',
+      'Clean & Scalable Solutions'
+    ];
+    let p = 0, c = 0, del = false;
+    function type() {
+      const cur = phrases[p];
+      twEl.textContent = del ? cur.substring(0, c--) : cur.substring(0, c++);
+      let spd = del ? 45 : 90;
+      if (!del && c === cur.length + 1) { spd = 1200; del = true; }
+      else if (del && c === -1) { del = false; p = (p + 1) % phrases.length; spd = 500; }
+      setTimeout(type, spd);
+    }
+    type();
+
+    // ——— Cursor glow follows mouse ———
+    const blob = document.getElementById('cursorBlob');
+    window.addEventListener('pointermove', (e) => {
+      blob.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // ——— Reveal animations with GSAP ———
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('section').forEach((sec, i) => {
+      gsap.from(sec, {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: sec, start: 'top 80%' }
+      });
+    });
+    gsap.from('header', { y: -80, opacity: 0, duration: 0.6, ease: 'power2.out' });
+
+    // Stagger cards
+    gsap.utils.toArray('#projects article').forEach((card, idx) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: idx * 0.05,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: card, start: 'top 85%' }
+      });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
