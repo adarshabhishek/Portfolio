@@ -48,6 +48,73 @@
 
     /* Cursor blob */
     .cursor-blob { position:fixed; inset:auto; top:0; left:0; width:280px; height:280px; pointer-events:none; border-radius:50%; filter: blur(60px); background: radial-gradient(circle at 30% 30%, rgba(88,210,106,.25), transparent 60%); transform: translate(-50%,-50%); z-index:0; }
+
+    /* CSS for projects section hover effects */
+    #projects article {
+      transition: all 0.3s ease-in-out;
+      border: 1px solid transparent;
+    }
+    
+    /* Styles for the floating chatbot */
+    #floating-chatbot-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+    }
+    #chat-toggle-btn {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    }
+    #chat-window {
+      position: absolute;
+      bottom: calc(4rem + 1rem); /* Button height + margin */
+      right: 0;
+      width: 350px;
+      height: 500px;
+      border-radius: 1rem;
+      background: #1f2937;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-in-out;
+    }
+    #chat-window.open {
+      transform: scale(1);
+    }
+    #chat-header {
+      background: #0B0B0C;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+    #chat-close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+    #chat-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+    #chat-messages::-webkit-scrollbar-track {
+        background: #1e293b;
+        border-radius: 3px;
+    }
+    #chat-messages::-webkit-scrollbar-thumb {
+        background: #4ade80;
+        border-radius: 3px;
+    }
+    .user-message {
+      background-color: #58D26A;
+      color: #000;
+      align-self: flex-end;
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-emerald-300/20 selection:text-white">
@@ -70,6 +137,7 @@
         <a class="link-effect hover:text-white" href="#education">Education</a>
         <a class="link-effect hover:text-white" href="#skills">Skills</a>
         <a class="link-effect hover:text-white" href="#projects">Projects</a>
+        <a class="link-effect hover:text-white" href="https://www.geeksforgeeks.org/user/adarshabhisk/" target="_blank">Gfg</a>
         <a class="link-effect hover:text-white" href="#contact">Contact</a>
         <a class="inline-flex items-center gap-2 rounded-xl bg-[var(--acc)]/10 border border-[var(--acc)]/40 px-4 py-2 hover:bg-[var(--acc)]/20 transition" href="https://drive.google.com/uc?export=download&id=1Ac8hGeXO2yOHQJ3maWSPupKbyBtrcUZe" download>
           <i class="ti ti-download"></i>
@@ -84,6 +152,7 @@
         <a class="link-effect py-1" href="#education">Education</a>
         <a class="link-effect py-1" href="#skills">Skills</a>
         <a class="link-effect py-1" href="#projects">Projects</a>
+        <a class="link-effect py-1" href="https://www.geeksforgeeks.org/user/adarshabhisk/" target="_blank">GeeksforGeeks</a>
         <a class="link-effect py-1" href="#contact">Contact</a>
         <a class="inline-flex items-center gap-2 rounded-xl bg-[var(--acc)]/10 border border-[var(--acc)]/40 px-4 py-2 w-max" href="https://drive.google.com/uc?export=download&id=1Ac8hGeXO2yOHQJ3maWSPupKbyBtrcUZe" download>
           <i class="ti ti-download"></i>
@@ -112,8 +181,6 @@
           <i class="ti ti-download inline-block mr-2"></i> Download Resume
         </a>
       </div>
-
-      
     <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-90">
     <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/color/32/kotlin.png" alt="Kotlin Icon" class="inline-block mr-2">Kotlin</div>
     <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/material-outlined/32/jetpack.png" alt="Jetpack Compose Icon" class="inline-block mr-2">Jetpack Compose</div>
@@ -157,6 +224,10 @@
             <i class="ti ti-brand-github"></i>
             <a class="link-effect" href="https://github.com/adarshabhishek" target="_blank">GitHub</a>
           </div>
+          <div class="flex items-center gap-3">
+            <i class="ti ti-brand-instagram"></i>
+            <a class="link-effect" href="https://www.instagram.com/adarsh_abhishek_/?next=%2F" target="_blank">Instagram</a>
+          </div>
         </div>
       </div>
     </section>
@@ -198,7 +269,7 @@
           <h3 class="text-xl font-semibold text-emerald-300 mb-2">Libraries / Frameworks</h3>
           <p>Android Jetpack, Dagger Hilt, Firebase SDK, ZegoCloud SDK, React.js, ML Kit, Coil, Retrofit</p>
         </div>
-        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6">
+        <div class="ring-gradient rounded-2xl bg-[var(--card)] p-6 md:col-span-2 lg:col-span-1">
           <h3 class="text-xl font-semibold text-emerald-300 mb-2">Tools / Platforms</h3>
           <p>GitHub, VS Code, Android Studio, Firebase</p>
         </div>
@@ -211,34 +282,22 @@
 
     <!-- Projects -->
     <section id="projects" class="py-24 text-white">
-  <!-- Load Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom CSS for card styles and hover effects -->
   <style>
-    /* Ensure the body and elements use a modern, clean font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-    body {
-        font-family: 'Inter', sans-serif;
-    }
-
-    /* Base styles for the project cards */
     article {
-      /* This transition applies to all animated properties, including transform, filter, and opacity */
       transition: all 0.3s ease-in-out;
       border: 1px solid transparent;
+    }
+    article:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
   </style>
 
   <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
-  <!-- The 'group' class on the container allows us to apply effects to children based on a sibling's hover state -->
   <div class="group grid gap-6 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-6xl px-4">
-    
-    <!-- Food Delivery App Card -->
-    <!-- The hover effect now blurs and fades out other cards, while the hovered card remains sharp and grows -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #fcd34d;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #fcd34d;">
-          <!-- Food icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils">
             <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
             <path d="M7 2v20" />
@@ -259,11 +318,9 @@
       </a>
     </article>
 
-    <!-- Firebase Auth App Card -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #93c5fd;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #93c5fd;">
-          <!-- Lock icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock">
             <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -281,11 +338,9 @@
       </a>
     </article>
 
-    <!-- Video Calling App Card -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #6ee7b7;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #6ee7b7;">
-          <!-- Video icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video">
             <path d="m22 8-6 4 6 4V8Z" />
             <rect x="2" y="8" width="14" height="8" rx="2" ry="2" />
@@ -303,11 +358,9 @@
       </a>
     </article>
 
-    <!-- AI Image Generator Card -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #c084fc;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #c084fc;">
-          <!-- Sparkles icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles">
             <path d="m12 3-1.9 5.8a2 2 0 0 1-1.2 1.2L3 12l5.8 1.9a2 2 0 0 1 1.2 1.2L12 21l1.9-5.8a2 2 0 0 1 1.2-1.2L21 12l-5.8-1.9a2 2 0 0 1-1.2-1.2Z" />
           </svg>
@@ -324,11 +377,9 @@
       </a>
     </article>
 
-    <!-- Document Scanner App Card -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #34d399;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #34d399;">
-          <!-- File icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text">
             <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
             <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -349,11 +400,9 @@
       </a>
     </article>
 
-    <!-- Note Making App Card -->
     <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #fca5a5;">
       <header class="flex items-center justify-between">
         <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #fca5a5;">
-          <!-- Notebook icon SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook">
             <path d="M2 6h4" />
             <path d="M2 10h4" />
@@ -392,10 +441,53 @@
           <a class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition" target="_blank" href="https://www.linkedin.com/in/adarsh-abhishek-339485272/">
             <i class="ti ti-brand-linkedin"></i> LinkedIn
           </a>
+          <a class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition" target="_blank" href="https://www.instagram.com/adarsh_abhishek_/?next=%2F">
+            <i class="ti ti-brand-instagram"></i> Instagram
+          </a>
         </div>
       </div>
     </section>
+
+    <!-- Suggestions Section -->
+    <section id="suggestions" class="py-24">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Leave a Suggestion</h2>
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="mb-6 text-lg text-white/80">If you have any suggestions or feedback on my work, please feel free to send them via this form. I appreciate your input!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7iedp8Oj034Ja1i1d3owwWilvBwXx65o6-aPNLCiI21Ddmg/viewform" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[var(--acc)] text-black font-semibold hover:opacity-90 transition">
+          <i class="ti ti-message-dots"></i>
+          Send a Suggestion
+        </a>
+      </div>
+    </section>
   </main>
+  
+  <!-- Floating Chatbot UI -->
+  <div id="floating-chatbot-container">
+    <button id="chat-toggle-btn" class="bg-[var(--acc)] text-black hover:opacity-90 transition">
+      <i class="ti ti-message-dots text-2xl"></i>
+    </button>
+    <div id="chat-window">
+      <div id="chat-header" class="p-4 flex items-center justify-between">
+        <h3 class="text-lg font-semibold">Adarsh's AI Assistant</h3>
+        <button id="chat-close-btn" class="p-1 rounded-full text-white hover:bg-white/20 transition">
+          <i class="ti ti-x text-xl"></i>
+        </button>
+      </div>
+      <div id="chat-messages" class="flex-grow overflow-y-auto p-4 flex flex-col space-y-4">
+        <div class="bg-gray-700 p-3 rounded-xl max-w-[80%]">
+          <p class="text-sm text-gray-300">Hello! I'm Adarsh's AI assistant. Ask me anything about his skills, education, or projects.</p>
+        </div>
+      </div>
+      <div class="p-4 border-t border-gray-700">
+        <div class="flex items-center gap-2">
+          <input type="text" id="user-input" placeholder="Ask a question..." class="flex-grow px-4 py-2 rounded-xl bg-gray-700 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <button id="send-btn" class="p-3 rounded-xl bg-green-500 text-black hover:bg-green-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="ti ti-send"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="text-center py-10 text-sm text-white/50 border-t border-white/10">
     © <span id="year"></span> Adarsh Abhishek. All rights reserved.
@@ -488,6 +580,127 @@
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+
+    // ——— Floating Chatbot Logic ———
+    const chatToggleBtn = document.getElementById('chat-toggle-btn');
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    const chatWindow = document.getElementById('chat-window');
+
+    chatToggleBtn.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+      chatToggleBtn.querySelector('i').classList.toggle('ti-message-dots');
+      chatToggleBtn.querySelector('i').classList.toggle('ti-x');
+    });
+    chatCloseBtn.addEventListener('click', () => {
+      chatWindow.classList.remove('open');
+      chatToggleBtn.querySelector('i').classList.add('ti-message-dots');
+      chatToggleBtn.querySelector('i').classList.remove('ti-x');
+    });
+
+    const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=';
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const portfolioContent = `
+      Adarsh Abhishek's Portfolio:
+      - **About Me:** A Computer Science undergraduate skilled in Android development, proficient in DSA with a strong problem-solving approach. I love building clean, scalable, user-focused solutions and I’m comfortable across the stack (Android + a bit of web). Open to Remote / Onsite work.
+      - **Education:** KIIT University (CSE) from July 2022 to July 2026, with a CGPA of 8.55/10. Chinmaya Vidyalaya (CBSE) from Mar 2019 to Mar 2021 with 87.6%. De-Nobili School F.R.I. (ICSE) from Mar 2008 to Apr 2019 with 93.0%.
+      - **Skills:** Programming Languages: Java, Kotlin, C/C++, JavaScript, Python. Libraries / Frameworks: Android Jetpack, Dagger Hilt, Firebase SDK, ZegoCloud SDK, React.js, ML Kit, Coil, Retrofit. Tools / Platforms: GitHub, VS Code, Android Studio, Firebase. Key Subjects: OOPS, DSA, DBMS, OS, SQL.
+      - **Projects:**
+        - **Food Delivery App:** Full‑stack Android app for customers, riders, and restaurants. Auth, real‑time tracking, notifications.
+        - **Firebase Auth App:** Kotlin + Firebase Authentication with email/password, Google sign‑in, and password reset.
+        - **Video Calling App:** 1:1 real‑time calling using Jetpack Compose, Kotlin, Hilt, Firebase RTDB, ZegoCloud SDK.
+        - **AI Image Generator:** Responsive web app that generates images from text prompts via Hugging Face models.
+        - **Document Scanner App:** Android + ML Kit Document Scanner. Save as JPEG/PDF with local storage and instant preview.
+        - **Note Making App:** A simple and intuitive note-taking app designed for quick and organized note management using CRUD operations.
+    `;
+    let chatHistory = [{
+      role: "user",
+      parts: [{ text: "You are Adarsh's AI assistant. You will only answer questions based on the provided portfolio content. If a question is outside of this scope, politely decline to answer." }]
+    }, {
+      role: "model",
+      parts: [{ text: "Understood. I'm ready to answer questions about Adarsh's skills, projects, and background based on the information provided in his portfolio." }]
+    }];
+
+    function addMessage(sender, text) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `p-3 rounded-xl max-w-[80%] ${sender === 'user' ? 'bg-green-700/50 self-end' : 'bg-gray-700/50'}`;
+      
+      let innerHTML = '';
+      if (sender === 'model') {
+        innerHTML += `<p class="font-bold text-green-400 mb-1">AI Assistant</p>`;
+      }
+      innerHTML += `<p class="text-gray-300">${text}</p>`;
+      messageDiv.innerHTML = innerHTML;
+
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    async function sendMessage() {
+      const userPrompt = userInput.value.trim();
+      if (userPrompt === '') return;
+
+      addMessage('user', userPrompt);
+      userInput.value = '';
+      sendBtn.disabled = true;
+
+      // Add loading indicator
+      const loadingIndicator = document.createElement('div');
+      loadingIndicator.id = 'loading';
+      loadingIndicator.className = 'bg-gray-700 p-3 rounded-xl max-w-[80%] flex items-center gap-2';
+      loadingIndicator.innerHTML = '<div class="w-2 h-2 bg-green-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-green-500 rounded-full animate-bounce delay-100"></div><div class="w-2 h-2 bg-green-500 rounded-full animate-bounce delay-200"></div>';
+      chatMessages.appendChild(loadingIndicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      chatHistory.push({ role: "user", parts: [{ text: userPrompt }] });
+
+      const finalPrompt = `
+        Based on the following information about Adarsh Abhishek:
+        ${portfolioContent}
+
+        Answer the following question. If the question cannot be answered from the information provided, politely decline and state that you can only answer questions based on the portfolio content.
+
+        Question: ${userPrompt}
+      `;
+
+      try {
+        const payload = {
+          contents: [{ role: "user", parts: [{ text: finalPrompt }] }],
+        };
+        const apiKey = ''; // Leave this as is.
+        const apiUrl = `${API_URL}${apiKey}`;
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        const text = result.candidates[0].content.parts[0].text;
+        addMessage('model', text);
+
+      } catch (error) {
+        console.error('Error fetching from Gemini API:', error);
+        addMessage('model', 'I apologize, but I am unable to process that request at this time. Please try again later.');
+      } finally {
+        // Remove loading indicator
+        loadingIndicator.remove();
+        sendBtn.disabled = false;
+      }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
   </script>
 </body>
 </html>
