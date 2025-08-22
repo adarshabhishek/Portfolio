@@ -102,7 +102,7 @@
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
         <span class="text-[var(--acc)]">Hi, I'm Adarsh Abhishek</span>
-        <span class="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">Android Developer • Problem Solver</span>
+        <span class="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">• Android Developer • Problem Solver</span>
       </h1>
       <p id="typewriter" class="mt-6 text-lg md:text-xl text-white/70 h-7"></p>
 
@@ -113,12 +113,17 @@
         </a>
       </div>
 
-      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-90">
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Kotlin</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Jetpack Compose</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Firebase</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">DSA</div>
-      </div>
+      
+    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-90">
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/color/32/kotlin.png" alt="Kotlin Icon" class="inline-block mr-2">Kotlin</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/material-outlined/32/jetpack.png" alt="Jetpack Compose Icon" class="inline-block mr-2">Jetpack Compose</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/color/32/firebase.png" alt="Firebase Icon" class="inline-block mr-2">Firebase</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"><img src="https://img.icons8.com/color/32/java-coffee-cup-logo--v1.png" alt="JAVA Icon" class="inline-block mr-2">JAVA</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">DSA</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">OOPS</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">DBMS</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">SQL</div>
+</div>
     </section>
 
     <!-- About -->
@@ -131,7 +136,7 @@
             I love building clean, scalable, user-focused solutions and I’m comfortable across the stack (Android + a bit of web).
           </p>
           <div class="mt-6 flex gap-3 flex-wrap">
-            <span class="px-3 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">Open to Internships</span>
+            <span class="px-3 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">Open to Work</span>
             <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10">Remote / Onsite</span>
           </div>
         </div>
@@ -205,54 +210,172 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="py-24">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects & Open Source</h2>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Card template -->
-        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
-          <header class="flex items-center justify-between">
-            <h3 class="text-2xl font-bold">Food Delivery App</h3>
-            <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">Ongoing</span>
-          </header>
-          <p class="mt-3 text-white/80">Full‑stack Android app for customers, riders, and restaurants. Auth, real‑time tracking, notifications.</p>
-          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/BhojanBox">
-            GitHub <i class="ti ti-arrow-up-right"></i>
-          </a>
-        </article>
+    <section id="projects" class="py-24 text-white">
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS for card styles and hover effects -->
+  <style>
+    /* Ensure the body and elements use a modern, clean font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    body {
+        font-family: 'Inter', sans-serif;
+    }
 
-        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
-          <h3 class="text-2xl font-bold">Firebase Auth App</h3>
-          <p class="mt-3 text-white/80">Kotlin + Firebase Authentication with email/password, Google sign‑in, and password reset.</p>
-          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/FirebaseAuthApp">
-            GitHub <i class="ti ti-arrow-up-right"></i>
-          </a>
-        </article>
+    /* Base styles for the project cards */
+    article {
+      /* This transition applies to all animated properties, including transform, filter, and opacity */
+      transition: all 0.3s ease-in-out;
+      border: 1px solid transparent;
+    }
+  </style>
 
-        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
-          <h3 class="text-2xl font-bold">Video Calling App</h3>
-          <p class="mt-3 text-white/80">1:1 real‑time calling using Jetpack Compose, Kotlin, Hilt, Firebase RTDB, ZegoCloud SDK.</p>
-          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/VideoCallingApp">
-            GitHub <i class="ti ti-arrow-up-right"></i>
-          </a>
-        </article>
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
+  <!-- The 'group' class on the container allows us to apply effects to children based on a sibling's hover state -->
+  <div class="group grid gap-6 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-6xl px-4">
+    
+    <!-- Food Delivery App Card -->
+    <!-- The hover effect now blurs and fades out other cards, while the hovered card remains sharp and grows -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #fcd34d;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #fcd34d;">
+          <!-- Food icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+            <path d="M7 2v20" />
+            <path d="M21 15V2" />
+            <path d="M21 2c0 1.1-.9 2-2 2h-4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4c1.1 0 2-.9 2-2z" />
+          </svg>
+          Food Delivery App
+        </h3>
+        <span class="text-xs px-2 py-1 rounded-lg border text-black" style="background-color: #fcd34d; border-color: #d97706;">Ongoing</span>
+      </header>
+      <p class="mt-3 text-gray-300">Full‑stack Android app for customers, riders, and restaurants. Auth, real‑time tracking, notifications.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/BhojanBox" style="color: #fcd34d;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
 
-        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
-          <h3 class="text-2xl font-bold">AI Image Generator</h3>
-          <p class="mt-3 text-white/80">Responsive web app that generates images from text prompts via Hugging Face models.</p>
-          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/AI-Image-Generator">
-            GitHub <i class="ti ti-arrow-up-right"></i>
-          </a>
-        </article>
+    <!-- Firebase Auth App Card -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #93c5fd;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #93c5fd;">
+          <!-- Lock icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          Firebase Auth App
+        </h3>
+      </header>
+      <p class="mt-3 text-gray-300">Kotlin + Firebase Authentication with email/password, Google sign‑in, and password reset.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/FirebaseAuthApp" style="color: #93c5fd;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
 
-        <article class="group ring-gradient rounded-2xl bg-[var(--card)] p-6 transition-transform hover:-translate-y-1">
-          <h3 class="text-2xl font-bold">Document Scanner App</h3>
-          <p class="mt-3 text-white/80">Android + ML Kit Document Scanner. Save as JPEG/PDF with local storage and instant preview.</p>
-          <a class="mt-4 inline-flex items-center gap-2 text-emerald-300 link-effect" target="_blank" href="https://github.com/adarshabhishek/Document-Scanner-App">
-            GitHub <i class="ti ti-arrow-up-right"></i>
-          </a>
-        </article>
-      </div>
-    </section>
+    <!-- Video Calling App Card -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #6ee7b7;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #6ee7b7;">
+          <!-- Video icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video">
+            <path d="m22 8-6 4 6 4V8Z" />
+            <rect x="2" y="8" width="14" height="8" rx="2" ry="2" />
+          </svg>
+          Video Calling App
+        </h3>
+      </header>
+      <p class="mt-3 text-gray-300">1:1 real‑time calling using Jetpack Compose, Kotlin, Hilt, Firebase RTDB, ZegoCloud SDK.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/VideoCallingApp" style="color: #6ee7b7;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- AI Image Generator Card -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #c084fc;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #c084fc;">
+          <!-- Sparkles icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles">
+            <path d="m12 3-1.9 5.8a2 2 0 0 1-1.2 1.2L3 12l5.8 1.9a2 2 0 0 1 1.2 1.2L12 21l1.9-5.8a2 2 0 0 1 1.2-1.2L21 12l-5.8-1.9a2 2 0 0 1-1.2-1.2Z" />
+          </svg>
+          AI Image Generator
+        </h3>
+      </header>
+      <p class="mt-3 text-gray-300">Responsive web app that generates images from text prompts via Hugging Face models.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/AI-Image-Generator" style="color: #c084fc;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Document Scanner App Card -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #34d399;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #34d399;">
+          <!-- File icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            <path d="M10 9h5" />
+            <path d="M10 13h5" />
+            <path d="M10 17h5" />
+          </svg>
+          Document Scanner App
+        </h3>
+      </header>
+      <p class="mt-3 text-gray-300">Android + ML Kit Document Scanner. Save as JPEG/PDF with local storage and instant preview.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/Document-Scanner-App" style="color: #34d399;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Note Making App Card -->
+    <article class="relative rounded-2xl p-6 group-hover:blur-[0.5px] group-hover:scale-[0.95] group-hover:opacity-50 hover:!blur-none hover:!scale-105 hover:!opacity-100 hover:z-10" style="border-color: #fca5a5;">
+      <header class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold flex items-center gap-2" style="color: #fca5a5;">
+          <!-- Notebook icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook">
+            <path d="M2 6h4" />
+            <path d="M2 10h4" />
+            <path d="M2 14h4" />
+            <path d="M2 18h4" />
+            <rect width="16" height="20" x="4" y="2" rx="2" />
+            <path d="M16 2v20" />
+          </svg>
+          Note Making App
+        </h3>
+      </header>
+      <p class="mt-3 text-gray-300">I have created a simple and intuitive note-taking app designed for quick and organized note management using CRUD(Create, Read, Update & Delete) operations.</p>
+      <a class="mt-4 inline-flex items-center gap-2 link-effect" target="_blank" href="https://github.com/adarshabhishek/Note_Making_App" style="color: #fca5a5;">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+          <path d="M7 7h10v10" />
+          <path d="M7 17L17 7" />
+        </svg>
+      </a>
+    </article>
+  </div>
+</section>
 
     <!-- Contact -->
     <section id="contact" class="py-24">
